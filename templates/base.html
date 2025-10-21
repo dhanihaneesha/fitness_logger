@@ -1,33 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{% block title %}Fitness Logger{% endblock %}</title>
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='style.css') }}"
-    />
-  </head>
-  <body>
-    <div class="container">
-      <header>
-        <h1>💪 Fitness Logger</h1>
-        <p>Track your workouts, calories, and progress every day</p>
-      </header>
-
-      <nav>
-        <ul>
-          <li><a href="{{ url_for('home') }}">🏠 Dashboard</a></li>
-          <li><a href="{{ url_for('new_entry') }}">📝 Add Log</a></li>
-          <li><a href="{{ url_for('history') }}">📊 History</a></li>
-        </ul>
-      </nav>
-
-      {% with messages = get_flashed_messages(with_categories=true) %} {% if
-      messages %} {% for category, message in messages %}
-      <div class="alert alert-{{ category }}">{{ message }}</div>
-      {% endfor %} {% endif %} {% endwith %} {% block content %}{% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <title>Fitness Logger</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <h2>Fitness Logger</h2>
+        <div>
+            <a href="{{ url_for('index') }}">Add New Log</a>
+            <a href="{{ url_for('show_logs') }}">Previous Logs</a>
+        </div>
+    </nav>
+    
+    <div class="content">
+        {% block content %}{% endblock %}
     </div>
-  </body>
+</body>
 </html>

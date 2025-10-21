@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="result-box">
+    <h3>Today's Summary</h3>
+    <p><strong>Calories Consumed:</strong> {{ calories_consumed }}</p>
+    <p><strong>Calories Burned:</strong> {{ calories_burned }}</p>
+
+    {% if result_type == "quote" %}
+        <h4> Motivational Quote </h4>
+        <p class="message">{{ message }}</p>
+    {% elif result_type == "workouts" %}
+        <h4> Workout Ideas </h4>
+        <ul>
+            {% for w in message %}
+                <li>{{ w }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="message">{{ message }}</p>
+    {% endif %}
+
+    <a href="/" class="btn">Add Another Log</a>
+    <a href="/logs" class="btn">View Previous Logs</a>
+</div>
+{% endblock %}

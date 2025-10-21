@@ -9,5 +9,5 @@ spec:
     - protocol: TCP
       port: 5000 # Service port (external access)
       targetPort: 5000
-      nodePort: 30081 
+      nodePort: 30085
   type: NodePort
